@@ -1,7 +1,7 @@
 {
-  "name": "javascript",
+  "name": "threejs-gsap",
   "version": "1.0.0",
-  "description": "The JavaScript template",
+  "description": "ThreeJS + GSAP",
   "scripts": {
     "copy": "cp -r ./public/** ./dist/",
     "start": "pnpm copy && parcel ./src/index.html",
