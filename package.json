@@ -23,5 +23,6 @@
     "gsap": "^3.13.0",
     "tailwindcss": "^4.1.8",
     "three": "0.177.0"
-  }
+  },
+  "packageManager": "pnpm@8.6.0"
 }
