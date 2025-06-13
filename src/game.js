@@ -1,8 +1,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-import {sphere} from "./objects/sphere"
-import {plane} from "./objects/plane"
+import { sphere } from "./objects/sphere";
+import { plane } from "./objects/plane";
+
+import { keyMaps } from "./utils/key-control";
 
 // scene: our 3d world
 const scene = new THREE.Scene();
@@ -43,21 +45,56 @@ plane.rotation.x = -Math.PI / 2; // Rotate the plane to be horizontal
 plane.position.set(0, 0, 0); // Position the plane at the origin
 scene.add(plane);
 
-console.log({sphere, plane})
-const sphereY = plane.position.y + sphere.geometry.parameters.radius;
+console.log({ sphere, plane });
+const sphereY =
+  plane.position.y +
+  plane.geometry.parameters.depth +
+  sphere.geometry.parameters.radius;
 
 // place in top-right corner
-sphere.position.set(
-  0, 
-  sphereY,
-  0);
+sphere.position.set(0, sphereY, 0);
 scene.add(sphere);
 
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
 
-  control.update()
+  control.update();
+
+  const isAnyKeyPressed =
+    keyMaps.ArrowUp ||
+    keyMaps.ArrowDown ||
+    keyMaps.ArrowLeft ||
+    keyMaps.ArrowRight;
+
+  if (!isAnyKeyPressed) return;
+
+  const SPEED = 0.01; // Speed of movement
+
+  // const vericalRotationInDegrees = THREE.MathUtils.radToDeg(
+  //   control.getAzimuthalAngle()
+  // );
+  // const constrainedRotation = ((vericalRotationInDegrees % 360) + 360) % 360;
+
+  if (keyMaps.ArrowUp) {
+    sphere.position.z -= SPEED;
+    sphere.rotation.x -= SPEED;
+  }
+
+  if (keyMaps.ArrowDown) {
+    sphere.position.z += SPEED;
+    sphere.rotation.x += SPEED;
+  }
+
+  if (keyMaps.ArrowLeft) {
+    sphere.position.x -= SPEED;
+    sphere.rotation.z += SPEED;
+  }
+
+  if (keyMaps.ArrowRight) {
+    sphere.position.x += SPEED;
+    sphere.rotation.z -= SPEED;
+  }
 }
 animate();
 
