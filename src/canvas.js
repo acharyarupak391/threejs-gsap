@@ -34,7 +34,7 @@ scene.add(pointLight);
 
 // load PBR textures
 const pbrTextureLoader = new THREE.TextureLoader();
-const texturePath = "textures/"; // Change if your folder has a different name
+const texturePath = "textures/rock/"; // Change if your folder has a different name
 
 const colorMap = pbrTextureLoader.load(
   texturePath + "GreyRock02_2K_BaseColor.png"

@@ -46,7 +46,7 @@ scene.add(cube);
 // adding normal texture for sphere
 const textureLoader = new THREE.TextureLoader();
 const bricksTexture = textureLoader.load(
-  "https://threejs.org/examples/textures/brick_diffuse.jpg"
+  "https://threejs.org/examples/textures/rock/brick_diffuse.jpg"
 );
 
 // normal texture sphere
@@ -64,7 +64,7 @@ scene.add(normalSphere);
 
 // load PBR textures
 const pbrTextureLoader = new THREE.TextureLoader();
-const texturePath = "textures/"; // Change if your folder has a different name
+const texturePath = "textures/rock/"; // Change if your folder has a different name
 
 const colorMap = pbrTextureLoader.load(
   texturePath + "GreyRock02_2K_BaseColor.png"
